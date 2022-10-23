@@ -1,0 +1,11 @@
+Enter an arithmetic expression   :  a+(a*a)
+Accepted!
+Enter an arithmetic expression   :  a+a*a
+Accepted!
+Enter an arithmetic expression   :  a***a
+Rejected.
+Enter an arithmetic expression   :  a*
+Rejected.
+
+a+(a*a)  a+a*a , (a), a , a+a+a*a+a.... etc are  accepted
+++a, a***a, +a, a*, ((a . . . etc are rejected.

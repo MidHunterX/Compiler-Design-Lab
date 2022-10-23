@@ -1,0 +1,26 @@
+Enter the set of intermediate code (terminated by exit):
+MOV R0,a
+ADD R0,b
+MOV t1,R0
+exit
+
+Target code generation
+*******************
+        Mov V,R0
+°,,R0
+        Mov R0M
+        Mov ,,R1
+ ,,R1
+        Mov R1R
+        Mov D,R2
+ ,,R2
+        Mov R2A
+        Mov ,,R3
+ ,,R3
+        Mov R3R
+        Mov V,R4
+ ,,R4
+        Mov R4M
+        Mov ,,R5
+0,,R5
+        Mov R5t

@@ -1,0 +1,17 @@
+Enter the no of productions: 5
+Enter the 5 productions:
+S=AbCd
+A=Cf
+A=a
+C=gE
+E=h
+
+Enter an element (to find first & follow): S
+First(S) = {ga}
+Follow(S) = {$}
+Continue[0/1]? 1
+
+Enter an element (to find first & follow): A
+First(A) = {ga}
+Follow(A) = {b}
+Continue[0/1]? 0
