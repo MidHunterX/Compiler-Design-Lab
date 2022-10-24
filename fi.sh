@@ -6,7 +6,8 @@ echo $'| \  / |_  __| | | |__| |_   _ _ __ | |_ ___ _ __'
 echo $'| |\/| | |/ _` | |  __  | | | | '_ \| __/ _ \ '__|'
 echo $'| |  | | | (_| | | |  | | |_| | | | | ||  __/ |'
 echo $'|_|  |_|_|\__,_| |_|  |_|\__,_|_| |_|\__\___|_|'
-echo $'           Compiler Lab programs automation script'
+echo $'--------------------------------------------------'
+echo $'Compiler Lab programs automation script'
 echo $'--------------------------------------------------'
 printf "Input the Experiment number : "
 read exp
@@ -191,7 +192,7 @@ case $exp in
     clear
 	echo $"Exp 19 : Implement the back end of the compiler"
 	echo $"-----------------------------------------------"
-	cd '19 Backend/v1/'
+	cd '19 Backend/'
 	gcc bak.c
 	./a.out
 	;;
