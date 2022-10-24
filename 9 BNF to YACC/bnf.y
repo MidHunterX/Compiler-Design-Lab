@@ -1,29 +1,30 @@
 %{
-#include<string.h>
+	#include<string.h>
 #include<stdio.h>
-struct quad{
+struct quad
+{
 	char op[5];
-	char arg1[10];
-	char arg2[10];
-	char result[10];
+char arg1[10];
+char arg2[10];
+char result[10];
 }QUAD[30];
-
-struct stack{
+struct stack
+{
 	int items[100];
-	int top;
+int top;
 }stk;
-
 int Index=0,tIndex=0,StNo,Ind,tInd;
 extern int LineNo;
 %}
-
-%union{char var[10];}
+%union
+{
+	char var[10];
+}
 %token <var> NUM VAR RELOP
 %token MAIN IF ELSE WHILE TYPE
 %type <var> EXPR ASSIGNMENT CONDITION IFST ELSEST WHILELOOP
 %left '-' '+'
 %left '*' '/'
-
 %%
 PROGRAM : MAIN BLOCK
 ;
@@ -44,7 +45,7 @@ VARLIST: VAR ',' VARLIST
 | VAR
 ;
 ASSIGNMENT: VAR '=' EXPR{
-strcpy(QUAD[Index].op,"=");
+	strcpy(QUAD[Index].op,"=");
 strcpy(QUAD[Index].arg1,$3);
 strcpy(QUAD[Index].arg2,"");
 strcpy(QUAD[Index].result,$1);
@@ -62,69 +63,64 @@ EXPR: EXPR '+' EXPR {AddQuadruple("+",$1,$3,$$);}
 ;
 CONDST: IFST{
 	Ind=pop();
-	sprintf(QUAD[Ind].result,"%d",Index);
-	Ind=pop();
-	sprintf(QUAD[Ind].result,"%d",Index);
+sprintf(QUAD[Ind].result,"%d",Index);
+Ind=pop();
+sprintf(QUAD[Ind].result,"%d",Index);
 }
 | IFST ELSEST
 ;
 IFST: IF '(' CONDITION ')' {
 	strcpy(QUAD[Index].op,"==");
-	strcpy(QUAD[Index].arg1,$3);
-	strcpy(QUAD[Index].arg2,"FALSE");
-	strcpy(QUAD[Index].result,"-1");
-	push(Index);
-	Index++;
+strcpy(QUAD[Index].arg1,$3);
+strcpy(QUAD[Index].arg2,"FALSE");
+strcpy(QUAD[Index].result,"-1");
+push(Index);
+Index++;
 }
-BLOCK {
-	strcpy(QUAD[Index].op,"GOTO");
-	strcpy(QUAD[Index].arg1,"");
-	strcpy(QUAD[Index].arg2,"");
-	strcpy(QUAD[Index].result,"-1");
-	push(Index);
-	Index++;
-}
-;
+BLOCK { strcpy(QUAD[Index].op,"GOTO"); strcpy(QUAD[Index].arg1,"");
+strcpy(QUAD[Index].arg2,"");
+strcpy(QUAD[Index].result,"-1");
+push(Index);
+Index++;
+};
 ELSEST: ELSE{
 	tInd=pop();
-	Ind=pop();
-	push(tInd);
-	sprintf(QUAD[Ind].result,"%d",Index);
+Ind=pop();
+push(tInd);
+sprintf(QUAD[Ind].result,"%d",Index);
 }
 BLOCK{
 	Ind=pop();
-	sprintf(QUAD[Ind].result,"%d",Index);
-}
-;
-CONDITION: VAR RELOP VAR {
-	AddQuadruple($2,$1,$3,$$);
-	StNo=Index-1;
+sprintf(QUAD[Ind].result,"%d",Index);
+};
+CONDITION: VAR RELOP VAR {AddQuadruple($2,$1,$3,$$);
+StNo=Index-1;
 }
 | VAR
 | NUM
 ;
 WHILEST: WHILELOOP{
 	Ind=pop();
-	sprintf(QUAD[Ind].result,"%d",StNo);
-	Ind=pop();
-	sprintf(QUAD[Ind].result,"%d",Index);
+sprintf(QUAD[Ind].result,"%d",StNo);
+Ind=pop();
+sprintf(QUAD[Ind].result,"%d",Index);
 }
 ;
 WHILELOOP: WHILE'('CONDITION ')' {
 	strcpy(QUAD[Index].op,"==");
-	strcpy(QUAD[Index].arg1,$3);
-	strcpy(QUAD[Index].arg2,"FALSE");
-	strcpy(QUAD[Index].result,"-1");
-	push(Index);
-	Index++;
+strcpy(QUAD[Index].arg1,$3);
+strcpy(QUAD[Index].arg2,"FALSE");
+strcpy(QUAD[Index].result,"-1");
+push(Index);
+Index++;
 }
 BLOCK {
 	strcpy(QUAD[Index].op,"GOTO");
-	strcpy(QUAD[Index].arg1,"");
-	strcpy(QUAD[Index].arg2,"");
-	strcpy(QUAD[Index].result,"-1");
-	push(Index);
-	Index++;
+strcpy(QUAD[Index].arg1,"");
+strcpy(QUAD[Index].arg2,"");
+strcpy(QUAD[Index].result,"-1");
+push(Index);
+Index++;
 }
 ;
 %%
@@ -142,14 +138,14 @@ int main(int argc, char *argv[]) {
 		yyin = fp;
 	}
 	yyparse();
-	printf("\n\n\t\t------------------------------------"
-		   "\n\t\t Pos Operator \tArg1 \tArg2 \tResult"
-		   "\n\t\t------------------------------------");
+	printf("\n\n\t\t--------------------------------------"
+		   "\n\t\tPos Operator \tArg1 \tArg2 \tResult"
+		   "\n\t\t--------------------------------------");
 	for (i = 0; i < Index; i++) {
 		printf("\n\t\t %d\t %s\t %s\t %s\t%s", i, QUAD[i].op, QUAD[i].arg1,
 			   QUAD[i].arg2, QUAD[i].result);
 	}
-	printf("\n\t\t------------------------------------");
+	printf("\n\t\t--------------------------------------");
 	printf("\n\n");
 	return 0;
 }
