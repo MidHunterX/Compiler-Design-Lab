@@ -21,3 +21,5 @@ int|char|float return TYPE;
 \n LineNo++;
 . return yytext[0];
 %%
+
+int yywrap(void){return 1;}
