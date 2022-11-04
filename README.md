@@ -64,6 +64,8 @@ Aim: Write a lex program to find out total number of vowels and consonants from 
 8. Print the variables vowel and conso as output
 9. Stop
 
+<br>
+
 # II. Implementation of Syntax analyzer.
 
 ## Exp 6 - Valid arithmetic expression
@@ -104,6 +106,7 @@ Aim: Convert the BNF rules into YACC form and write code to generate abstract sy
 4. Represent three address code in tabular form
 5. Stop
 
+<br>
 
 # III. Application problems using NFA and DFA.
 
@@ -159,6 +162,7 @@ Aim: Write a program to find First and Follow of any given grammar.
 9. if α is a non-terminal and has a production α → AB, where B ℇ, then FOLLOW(A) is in FOLLOW(α).
 10. Stop
 
+<br>
 
 # IV. Implement Top-Down Parser.
 
@@ -170,6 +174,7 @@ Aim: Design and implement a recursive descent parser for a given grammar.
 4. The grammar which had been given already is substituted with the right productions until the input expression is developed.
 5. Stop
 
+<br>
 
 # V. Implement Bottom-up parser.
 
@@ -183,6 +188,7 @@ Aim: Construct a Shift Reduce Parser for a given language.
 6. Display the Stack Implementation table with corresponding Stack actions with input symbols.
 7. Stop
 
+<br>
 
 # VI. Simulation of code optimization Techniques.
 
@@ -195,6 +201,7 @@ Aim: Write a program to perform constant propagation.
 5. Iterate until the values of the variables stabilize.
 6. Stop
 
+<br>
 
 # VII. Implement Intermediate code generation for simple expressions.
 
@@ -226,6 +233,7 @@ Aim: Implement Intermediate code generation for simple expressions.
 10. Close both the files.
 11. Stop
 
+<br>
 
 # VIII. Implement the back end of the compiler.
 
