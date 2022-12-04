@@ -174,3 +174,4 @@ void AddQuadruple(char op[5], char arg1[10], char arg2[10], char result[10]) {
 	strcpy(result, QUAD[Index++].result);
 }
 yyerror() { printf("\n Error on line no:%d", LineNo); }
+

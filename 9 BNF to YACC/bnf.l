@@ -23,3 +23,4 @@ int|char|float return TYPE;
 %%
 
 int yywrap(void){return 1;}
+
